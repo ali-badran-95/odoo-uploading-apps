@@ -4,7 +4,7 @@
         <template id="academy_assets_common" name="Common Assets" inherit_id="web.assets_common">
             <xpath expr="." position="inside">
                 <script type="text/javascript" src="/colored_tree_view/static/src/js/list_renderer.js"/>
-                <link rel="stylesheet" type="text/scss" href="/colored_tree_view/static/src/scss/background_styles.scss"/>
+                <link rel="stylesheet" type="text/css" href="/colored_tree_view/static/src/css/background_styles.css"/>
             </xpath>
         </template>
     </data>
