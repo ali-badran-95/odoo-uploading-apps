@@ -22,7 +22,7 @@ class View(models.Model):
         try:
             super(View, self)._check_xml()
         except Exception as ex:
-            if str(ex).find("Invalid view"):
+            if str(ex).find("Invalid view") != 1:
                 has_to_raise_validation = True
                 for view in self:
                     if view.type != 'tree':
