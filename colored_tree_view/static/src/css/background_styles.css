@@ -1,0 +1,43 @@
+/**
+ *  This CSS is for the tree rows backgrounds
+ */
+
+tr.background-carmine {
+  background-color: #E7717D !important;
+}
+
+tr.background-carmine:hover {
+  background-color: #e56673 !important;
+}
+
+tr.background-ghost {
+  background-color: #C2CAD0 !important;
+}
+
+tr.background-ghost:hover {
+  background-color: #b7c0c8 !important;
+}
+
+tr.background-seed {
+  background-color: #C2B9B0 !important;
+}
+
+tr.background-seed:hover {
+  background-color: #bcb3a9 !important;
+}
+
+tr.background-soil {
+  background-color: #a08779 !important;
+}
+
+tr.background-soil:hover {
+  background-color: #957a6a !important;
+}
+
+tr.background-olive {
+  background-color: #AFD275 !important;
+}
+
+tr.background-olive:hover {
+  background-color: #a5cd65 !important;
+}
