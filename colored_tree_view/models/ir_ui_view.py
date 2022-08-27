@@ -22,16 +22,21 @@ class View(models.Model):
         try:
             super(View, self)._check_xml()
         except Exception as ex:
-            if str(ex).find("Invalid view") != -1:
-                has_to_raise_validation = True
-                for view in self:
+            should_raise_validation = True
+            for view in self:
+                try:
                     if view.type != 'tree':
                         continue
 
-                    has_to_raise_validation = False
+                    should_raise_validation = False
+
+                    view_arch = etree.fromstring(view.arch.encode('utf-8'))
+                    view._valid_inheritance(view_arch)
                     view_def = view.read_combined(['arch'])
                     view_arch_utf8 = view_def['arch']
                     view_doc = etree.fromstring(view_arch_utf8)
+                    # verify that all fields used are valid, etc.
+                    view.postprocess_and_fields(view_doc, validate=True)
                     # RNG-based validation is not possible anymore with 7.0 forms
                     view_docs = [view_doc]
                     if view_docs[0].tag == 'data':
@@ -45,8 +50,7 @@ class View(models.Model):
                         check = is_valid_tree_view(view_arch)
                         if not check:
                             raise ex
-
-                if has_to_raise_validation:
+                except ValueError:
                     raise ex
             else:
                 raise ex
